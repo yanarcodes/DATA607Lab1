@@ -1,8 +1,39 @@
 ---
-title: "Lab1_YR"
+title: "Lab1 - Airbnbs in NYC"
 format: pdf
 author: "Yana Rabkova"
 editor: visual
 ---
 
-#Lab 1 - Airbnbs in NYC
+```{r}
+#loading packages
+library(readr)
+library(ggridges)
+library(tidyverse)
+
+nycbnb = read_csv("nycbnb.csv")
+```
+
+**Problem 1.** How many observations (rows) does the dataset have? Instead of hard coding the number in your answer, use inline code.
+
+```{r}
+nrows <- nycbnb %>% nrow()
+print(paste("The dataset contains",nrows,"observations"))
+```
+
+**Problem 2.** Run `View(nycbnb)` in your Console to view the data in the data viewer. What does each row in the dataset represent?
+
+Each column represents a variable. We can get a list of the variables in the data frame using the `names()` function.
+
+```{r}
+
+names(nycbnb)
+```
+
+Each row represents an individual listing.
+
+**Problem 3.** Pick one of the five boroughs of NYC (Manhattan, Queens, Brooklyn, the Bronx, or Staten Island), and create a faceted histogram where each facet represents a neighborhood in your chosen borough and displays the distribution of Airbnb prices in that neighborhood. Think critically about whether it makes more sense to stack the facets on top of each other in a column, lay them out in a row, or wrap them around. Along with your visualization, include your reasoning for the layout you chose for your facets.
+
+**Problem 4.** Use a single pipeline to identity the neighborhoods city-wide with the top five median listing prices that have a minimum of 50 listings. Then, in another pipeline filter the data for these five neighborhoods and make ridge plots of the distributions of listing prices in these five neighborhoods. In a third pipeline calculate the minimum, mean, median, standard deviation, IQR, and maximum listing price in each of these neighborhoods. Use the visualization and the summary statistics to describe the distribution of listing prices in the neighborhoods. (Your answer will include three pipelines, one of which ends in a visualization, and a narrative.)
+
+**Problem 5.** Create a visualization that will help you compare the distribution of review scores (`review_scores_rating`) across neighborhoods. You get to decide what type of visualization to create and which neighborhoods are most interesting to you, and there is more than one correct answer! In your answer, include a brief interpretation of how Airbnb guests rate properties in general and how the neighborhoods compare to each other in terms of their ratings.
